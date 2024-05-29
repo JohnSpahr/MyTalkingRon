@@ -32,7 +32,7 @@ function speak() {
 
             recognition.onresult = function(event) {
                 const current = event.resultIndex;
-                const transcript = event.results[current][0].transcript; //transcript of what Ron heard.
+                const transcript = event.results[current][0].transcript; //transcript of what Ron heard
 
                 //speak input
                 document.getElementById("ronImg").src = "speak.gif";
@@ -42,9 +42,14 @@ function speak() {
                 speech.rate = 1;
                 speech.pitch = 0.1; //toggle for max voicage!!
 
-                instructions.innerText = '"' + transcript + '"'; //show user what Ron heard.
-                window.speechSynthesis.speak(speech);
-                speak(); //loop
+                instructions.innerText = '"' + transcript + '"'; //show user what Ron heard
+
+                window.speechSynthesis.speak(speech); //talk
+
+                //handle speech synthesis end event
+                speech.addEventListener("end", (event) => {
+                    speak(); //keep listening when speech ends
+                });
             };
         } catch {
             alert("Whoops! Looks like your browser isn't supported."); //only if browser badbad
@@ -57,5 +62,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.4\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
+    alert("My Talking Ron v0.0.5\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
 }

@@ -14,11 +14,12 @@
     <main>
         <h1>My Talking Ron</h1>
         <p id="tipTxt">your talking skeleton pal</p>
-        <img width="100" id="ronImg" src="ron.JPEG">
+        <img width="100" id="ronImg" src="ron.png">
         <hr>
-        <button class="talk" onclick="speak()">Talk to Ron!</button>
+        <input type="button" id="talkBtn" class="talk" onclick="listen()" value="Talk to Ron!" />
         <hr>
-        <p>Don't hear Ron reply? Your browser may not be fully supported or your volume may be muted.</p>
+        <a href="#" onclick="help()">Not Working?</a>
+        <p><b>Warning: </b>Your browser may send speech input to be processed elsewhere!</p>
         <hr>
         <a href="#" onclick="about()">About</a>
     </main>

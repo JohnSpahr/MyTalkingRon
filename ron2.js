@@ -15,7 +15,7 @@ function listen() {
     } else {
         //if listening already
         isListening = false;
-        document.querySelector('#ShowButton').value = "Talk to Ron!";
+        document.querySelector('#talkBtn').value = "Talk to Ron!";
     }
 }
 
@@ -25,32 +25,30 @@ function speak() {
         try { //If browser supports the speech recognition feature.
             const instructions = document.getElementById("tipTxt");
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognition = new SpeechRecognition(); //The recognition variable will give us access to all the API's methods and properties. 
+            const recognition = new SpeechRecognition();
             recognition.start();
 
-            recognition.onstart = function() { //voice recognition activated.
+            recognition.onstart = function() { //voice recognition activated!!
                 document.getElementById("ronImg").src = "listen.gif";
             };
 
             recognition.onresult = function(event) {
-                console.log("test");
                 const current = event.resultIndex;
                 const transcript = event.results[current][0].transcript;
-                console.log(transcript);
 
+                //speak input
                 document.getElementById("ronImg").src = "speak.gif";
                 const speech = new SpeechSynthesisUtterance();
                 speech.text = transcript;
                 speech.volume = 1;
                 speech.rate = 1;
-                speech.pitch = 0.2;
+                speech.pitch = 0.1;
 
                 instructions.innerText = '"' + transcript + '"';
                 window.speechSynthesis.speak(speech);
                 speak();
             };
-        } catch (e) {
-            console.error(e);
+        } catch {
             alert("Whoops! Looks like your browser isn't supported.");
         };
     }

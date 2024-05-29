@@ -13,15 +13,15 @@ function listen() {
     } else {
         //if listening already
         isListening = false;
-        document.getElementById('talkBtn').value = "Talk to Ron!"; //change button text
         document.getElementById("ronImg").src = "ron.png"; //default state
         recognition.abort() //no more listening
+        document.getElementById('talkBtn').value = "Stopping..."; //change button text
     }
 }
 
 function speak() {
     if (isListening) { //only run if listening
-        try { //If browser supports the speech recognition feature.
+        try { //if browser supports the speech recognition feature
             const instructions = document.getElementById("tipTxt");
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
@@ -55,6 +55,8 @@ function speak() {
         } catch {
             alert("Whoops! Looks like your browser isn't supported."); //only if browser badbad
         };
+    } else {
+        document.getElementById('talkBtn').value = "Talk to Ron!"; //change button text
     }
 }
 

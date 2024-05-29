@@ -20,7 +20,6 @@ function listen() {
 
 function speak() {
     if (isListening) { //only run if listening
-        document.getElementById("ronImg").src = "ron.png";
         try { //If browser supports the speech recognition feature.
             const instructions = document.getElementById("tipTxt");
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -58,5 +57,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.3\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
+    alert("My Talking Ron v0.0.4\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
 }

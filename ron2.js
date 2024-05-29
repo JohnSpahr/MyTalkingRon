@@ -15,6 +15,7 @@ function listen() {
         isListening = false;
         document.getElementById('talkBtn').value = "Talk to Ron!"; //change button text
         document.getElementById("ronImg").src = "ron.png"; //default state
+        recognition.abort() //no more listening
     }
 }
 
@@ -62,5 +63,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.5\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
+    alert("My Talking Ron v0.0.6\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
 }

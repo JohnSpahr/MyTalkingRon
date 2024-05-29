@@ -22,7 +22,6 @@ function listen() {
 function speak() {
     if (isListening) { //only run if listening
         try { //if browser supports the speech recognition feature
-            const instructions = document.getElementById("tipTxt");
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
             recognition.start(); //listen
@@ -34,6 +33,7 @@ function speak() {
             recognition.onresult = function(event) {
                 const current = event.resultIndex;
                 const transcript = event.results[current][0].transcript; //transcript of what Ron heard
+                const transcriptTxt = document.getElementById("transcriptTxt"); //where transcript is shown to user
 
                 //speak input
                 document.getElementById("ronImg").src = "speak.gif";
@@ -43,7 +43,7 @@ function speak() {
                 speech.rate = 1;
                 speech.pitch = 0.1; //toggle for max voicage!!
 
-                instructions.innerText = '"' + transcript + '"'; //show user what Ron heard
+                transcriptTxt.innerText = '"' + transcript + '"'; //show user what Ron heard
 
                 window.speechSynthesis.speak(speech); //talk
 
@@ -56,6 +56,8 @@ function speak() {
             alert("Whoops! Looks like your browser isn't supported."); //only if browser badbad
         };
     } else {
+        document.getElementById("transcriptTxt").innerText = "your talking skeleton pal"
+        document.getElementById("ronImg").src = "ron.png"; //default state
         document.getElementById('talkBtn').value = "Talk to Ron!"; //change button text
     }
 }
@@ -65,5 +67,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.8\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
+    alert("My Talking Ron v0.1.0\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
 }

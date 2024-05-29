@@ -8,12 +8,13 @@ function listen() {
     if (!isListening) {
         //if listening is disabled
         isListening = true;
-        speak();
-        document.getElementById('talkBtn').value = "Stop Listening";
+        speak(); //start speech loop
+        document.getElementById('talkBtn').value = "Stop Listening"; //change button text
     } else {
         //if listening already
         isListening = false;
-        document.getElementById('talkBtn').value = "Talk to Ron!";
+        document.getElementById('talkBtn').value = "Talk to Ron!"; //change button text
+        document.getElementById("ronImg").src = "ron.png"; //default state
     }
 }
 
@@ -57,5 +58,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.2\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
+    alert("My Talking Ron v0.0.3\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
 }

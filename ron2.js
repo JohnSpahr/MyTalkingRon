@@ -1,40 +1,38 @@
-const btn = document.querySelector('.talk');
-const content = document.querySelector('.content');
-
+//talking ron code!!
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition(); //The recognition variable will give us access to all the API's methods and properties. 
+const recognition = new SpeechRecognition(); //speech recognition api
 
-var isListening = false;
+var isListening = false; //tracks whether or not Ron should listen
 
 function listen() {
     if (!isListening) {
         //if listening is disabled
         isListening = true;
         speak();
-        document.querySelector('#talkBtn').value = "Stop Listening";
+        document.getElementById('talkBtn').value = "Stop Listening";
     } else {
         //if listening already
         isListening = false;
-        document.querySelector('#talkBtn').value = "Talk to Ron!";
+        document.getElementById('talkBtn').value = "Talk to Ron!";
     }
 }
 
 function speak() {
-    if (isListening) {
+    if (isListening) { //only run if listening
         document.getElementById("ronImg").src = "ron.png";
         try { //If browser supports the speech recognition feature.
             const instructions = document.getElementById("tipTxt");
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
-            recognition.start();
+            recognition.start(); //listen
 
-            recognition.onstart = function() { //voice recognition activated!!
+            recognition.onstart = function() { //when voice recognition activated
                 document.getElementById("ronImg").src = "listen.gif";
             };
 
             recognition.onresult = function(event) {
                 const current = event.resultIndex;
-                const transcript = event.results[current][0].transcript;
+                const transcript = event.results[current][0].transcript; //transcript of what Ron heard.
 
                 //speak input
                 document.getElementById("ronImg").src = "speak.gif";
@@ -42,14 +40,14 @@ function speak() {
                 speech.text = transcript;
                 speech.volume = 1;
                 speech.rate = 1;
-                speech.pitch = 0.1;
+                speech.pitch = 0.1; //toggle for max voicage!!
 
-                instructions.innerText = '"' + transcript + '"';
+                instructions.innerText = '"' + transcript + '"'; //show user what Ron heard.
                 window.speechSynthesis.speak(speech);
-                speak();
+                speak(); //loop
             };
         } catch {
-            alert("Whoops! Looks like your browser isn't supported.");
+            alert("Whoops! Looks like your browser isn't supported."); //only if browser badbad
         };
     }
 }
@@ -59,5 +57,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.0.1\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
+    alert("My Talking Ron v0.0.2\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr");
 }

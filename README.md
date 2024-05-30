@@ -1,3 +1,5 @@
 # MyTalkingRon
-Talking Tom type app that uses JavaScript for speech recognition and speech synthesis.
-<a href="https://johnspahr.github.io/MyTalkingRon" target="_blank">Check it out!</a>
+Talking Tom type web app that uses vanilla JavaScript for speech recognition and synthesis.
+<a href="https://johnspahr.github.io/MyTalkingRon">Check it out!</a>
+
+See compatible browsers <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition">here</a>.

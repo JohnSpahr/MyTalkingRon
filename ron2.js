@@ -67,5 +67,5 @@ function help() {
 }
 
 function about() {
-    alert("My Talking Ron v0.1.0\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
+    alert("My Talking Ron v0.1.1\n\nProgrammed and designed by John Spahr\ngithub.com/johnspahr\n\nMade with <3 and vanilla JS!");
 }

@@ -15,7 +15,8 @@ main {
     border: 2px solid #000;
     background-color: #fefefe;
     text-align: center;
-    width: 400px;
+    min-width: 300px;
+    max-width: 500px;
     position: absolute;
     left: 0;
     right: 0;
